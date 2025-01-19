@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belleza - Software de Animación Profesional</title>
+    <style>
+        /* Reset y variables */
+        :root {
+            --color-primary: #3b82f6;
+            --color-secondary: #7c3aed;
+            --color-dark: #111827;
+            --color-gray-800: #1f2937;
+            --color-gray-700: #374151;
+            --color-gray-400: #9ca3af;
+            --color-white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            color: var(--color-white);
+            background: linear-gradient(to bottom, var(--color-dark), var(--color-gray-800));
+            min-height: 100vh;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Navegación */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* Botones */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .button-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .button-primary:hover {
+            background-color: #2563eb;
+        }
+
+        .button-ghost {
+            color: var(--color-gray-400);
+        }
+
+        .button-ghost:hover {
+            color: var(--color-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 0;
+            gap: 2rem;
+        }
+
+        .hero-content {
+            max-width: 32rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--color-gray-400);
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            width: 600px;
+            height: 400px;
+            border-radius: 0.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background-color: var(--color-gray-700);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--color-gray-800);
+            padding: 5rem 0;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--color-gray-700);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .feature-icon {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            color: var(--color-gray-400);
+        }
+
+        /* Download Section */
+        .download {
+            padding: 5rem 0;
+        }
+
+        .download-card {
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            padding: 3rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+
+        .download-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-description {
+            max-width: 42rem;
+            margin: 0 auto 2rem;
+            font-size: 1.25rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-dark);
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-title {
+            color: var(--color-white);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            color: var(--color-gray-400);
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .footer-links li:hover {
+            color: var(--color-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: auto;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="nav">
+            <div class="nav-logo">Belleza</div>
+            <div class="nav-links">
+                <a href="#" class="button button-ghost">Features</a>
+                <a href="#" class="button button-ghost">Pricing</a>
+                <a href="#" class="button button-ghost">Documentation</a>
+                <a href="https://estebanmansilla.gumroad.com/l/obicp" target="_blank" class="button button-primary">Download Now</a>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Professional Animation Made Simple</h1>
+                <p class="hero-description">
+                    Create stunning animations with our intuitive tools. Perfect for artists,
+                    designers, and animators of all skill levels.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://estebanmansilla.gumroad.com/l/obicp" class="button button-primary">Try it Free →</a>
+                    <a href="https://estebanmansilla.gumroad.com/l/obicp" class="button button-ghost">Watch Demo ▶</a>
+                </div>
+            </div>
+            <img src="https://github.com/user-attachments/assets/02520c5c-f4f2-4219-ba41-644bd452608c" alt="Belleza Animation Software Interface" class="hero-image">
+        </section>
+    </div>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="features-title">Powerful Features for Professional Animation</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Layer Management</h3>
+                    <p class="feature-description">
+                        Organize your animations with an intuitive layer system.
+                        Group, mask, and adjust opacity with ease.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3 class="feature-title">Advanced Drawing Tools</h3>
+                    <p class="feature-description">
+                        Professional-grade drawing tools with pressure sensitivity
+                        and customizable brushes.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎬</div>
+                    <h3 class="feature-title">Real-time Preview</h3>
+                    <p class="feature-description">
+                        See your animations come to life instantly with our
+                        real-time preview system.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download">
+        <div class="container">
+            <div class="download-card">
+                <h2 class="download-title">Start Creating Today</h2>
+                <p class="download-description">
+                    Join thousands of artists already using Belleza to bring their
+                    ideas to life through animation.
+                </p>
+                <a href="https://estebanmansilla.gumroad.com/l/obicp" target="_blank" class="button button-primary">Download Belleza</a>
+            </div>
+        </div>
+    </section>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4 class="footer-title">Belleza</h4>
+                    <p class="footer-description">
+                        Professional animation software for creative minds.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links">
+                        <li>Features</li>
+                        <li>Pricing</li>
+                        <li>Download</li>
+                        <li>Updates</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li>Documentation</li>
+                        <li>Tutorials</li>
+                        <li>Blog</li>
+                        <li>Community</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li>About</li>
+                        <li class="contact-item">
+                            <span onclick="toggleEmailOptions()" style="cursor: pointer;">Contact</span>
+                            <div id="emailOptions" class="email-options">
+                                <span class="email-text" id="email-text">masteringsteve@gmail.com</span>
+                                <button class="copy-button" onclick="copyEmail()">Copy</button>
+                                <a href="mailto:masteringsteve@gmail.com" class="email-link">📧 Send email</a>
+                            </div>
+                        </li>
+                        <li>Privacy</li>
+                        <li>Terms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+    .contact-item {
+        position: relative;
+    }
+    
+    .email-options {
+        display: none;
+        position: absolute;
+        left: 0;
+        background-color: var(--color-gray-700);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: 280px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        z-index: 50;
+    }
+    
+    .email-text {
+        color: var(--color-gray-400);
+        font-family: monospace;
+        padding: 0.5rem;
+        background-color: var(--color-gray-800);
+        border-radius: 0.375rem;
+        user-select: all;
+    }
+    
+    .copy-button {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+        border: none;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .copy-button:hover {
+        background-color: #2563eb;
+    }
+    
+    .email-link {
+        color: var(--color-gray-400);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        transition: all 0.2s;
+    }
+    
+    .email-link:hover {
+        color: var(--color-white);
+        background-color: var(--color-gray-800);
+    }
+    </style>
+    
+    <script>
+    function toggleEmailOptions(event) {
+        const emailOptions = document.getElementById('emailOptions');
+        emailOptions.style.display = emailOptions.style.display === 'none' ? 'flex' : 'none';
+        if (event) event.stopPropagation();
+    }
+    
+    function copyEmail() {
+        const email = "masteringsteve@gmail.com";
+        navigator.clipboard.writeText(email).then(() => {
+            const button = document.querySelector('.copy-button');
+            button.textContent = 'Copied!';
+            setTimeout(() => {
+                button.textContent = 'Copy';
+            }, 2000);
+        });
+    }
+    
+    // Close email options when clicking outside
+    document.addEventListener('click', function(event) {
+        const emailOptions = document.getElementById('emailOptions');
+        const contactItem = document.querySelector('.contact-item');
+        if (!contactItem.contains(event.target)) {
+            emailOptions.style.display = 'none';
+        }
+    });
+    </script>
+
